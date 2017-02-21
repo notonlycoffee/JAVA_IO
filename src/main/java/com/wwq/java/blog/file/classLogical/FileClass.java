@@ -1,4 +1,4 @@
-package com.wwq.java.blog.file;
+package com.wwq.java.blog.file.classLogical;
 
 import java.io.File;
 import java.util.Date;
