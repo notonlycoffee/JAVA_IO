@@ -75,8 +75,23 @@ BufferInputStream和BufferOutputStream可以通过减少读写次数来提高输
 
 RandomAccessFile可以同时对文件进行读取和写入,并且不会增加新的文件;
 
+RandomAccessFile有两种模式,一种是"r"模式,另一种是"rw"模式
+    "r"模式只允许读取文件
+    "rw"模式允许读取和写入文件
 
 
+        RandomAccessFile raf = new RandomAccessFile("one.dat","rw");
+    如果one.dat已经存在,就直接访问one.dat这个文件;如果one.dat这个文件不存在,则创建这个文件,再进行文件的操作
+
+
+RandomAccessFile类具有*文件指针*的概念,每次读取文件内容,文件指针就会移动相应的字节数,接着读取下一个数据内容,
+以此类推;比如readInt()方法调用之后,文件指针就会向前移动4个字节单位;
+
+RandomAccessFile 类中的setLength方法,如果设置为0,比如setLength(0),则会将文件长度设置为0,也就是源文件中的内容会全部删除;
+
+
+
+![总结](../img/figure2.png "io流总结")
 
 
 
