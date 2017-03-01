@@ -3,7 +3,7 @@
 
 
 
-二进制IO
+#二进制IO
 
 ![二进制IO的继承管理](../img/figure1.jpg)
 
@@ -89,6 +89,25 @@ RandomAccessFile类具有*文件指针*的概念,每次读取文件内容,文件
 
 RandomAccessFile 类中的setLength方法,如果设置为0,比如setLength(0),则会将文件长度设置为0,也就是源文件中的内容会全部删除;
 
+---
+
+###PushBackInputStream
+这个流可以在读取流中的内容之后,判断流中的内容是不是想要的,如果是,就获取,然后继续读取下去;
+如果读取的内容不符合要求,就可以调用流中的unread方法,不读取流中的这个数据;
+
+unread方法回退一个字节之后,如果继续调用read方法,还是会继续读取你回退的这个字节;
+
+
+
+writeUTF()方法采用的是java自己定义的8位Unicode编码,所以在跨平台的使用上,writeUTF并不通用,
+更多的是建议使用writeChars方法进行字符串的写出;
+
+
+
+
+
+
+
 
 
 ![总结](../img/figure2.png "io流总结")
@@ -110,7 +129,53 @@ RandomAccessFile 类中的setLength方法,如果设置为0,比如setLength(0),�
 ---
 
 
-文本IO
+#文本IO
+
+###InputStreamReader和OutputStreamWriter
+
+可以将字节流转换成字符流,可以设置转换时候的编码方式,比如:
+        InputStreamReader in = new InputStreamReader(new FilterInputStream("one.txt"),"utf-8");
+
+---
+
+###FileReader和FileWriter
+
+        FileWriter out = new FileWriter("one.txt");
+        相当于:
+        FileWriter out = new FileWriter(new FileOutputStream("one.txt"));
+
+---
+
+###PrintWriter
+
+        PrintWriter out = new PrintWriter("one.txt");
+        相当于:
+        PrintWriter out = new PrintWriter(new FileWriter("one.txt"));
+
+---
+###BufferedReader
+
+BufferedReader读入文件,可以调用方法readLine读取一整行的数据;
+        BufferedReader in = new BufferedReader(new FileReader("one.txt"));
+readLine在遇到文件内容末尾的时候,就会返回null;利用这个判断是否已经到达文件的尾部;
+
+
+---
+
+
+#zip文件读取
+使用ZipInputStream和ZipOutputStream
+对于jar文件的读取和写入,使用JarInputStream和JarOutputStream类来完成
+
+
+
+
+
+
+
+
+
+
 
 
 

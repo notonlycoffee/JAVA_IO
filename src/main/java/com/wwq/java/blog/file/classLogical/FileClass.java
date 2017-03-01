@@ -13,7 +13,7 @@ public class FileClass {
      * @author jc
      */
     public static void main(String[] args) {
-        File file = new File("E:\\one.txt");
+//        File file = new File("E:\\one.txt");
 
         /*
         System.out.println(file.exists());//判断文件是否存在
@@ -32,6 +32,17 @@ public class FileClass {
         file.renameTo(new File("E:\\two.txt"));//重命名一个文件
 
         */
+
+
+        /**
+         * 使用System.getProperty("user.dir");获取用户的工作目录
+         */
+        File file = new File("two.txt");
+        boolean isExists = file.exists();
+        String location = System.getProperty("user.dir");
+        System.out.println("文件是否存在?  "+isExists);
+        System.out.println("文件路径: "+location);
+
 
     }
 
