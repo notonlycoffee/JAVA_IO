@@ -1,4 +1,4 @@
-package com.wwq.java.blog.io.classLogincal;
+package com.wwq.java.blog.io.classLogical;
 
 import java.io.*;
 import java.util.zip.ZipEntry;
